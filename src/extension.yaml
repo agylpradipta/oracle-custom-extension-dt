@@ -1,0 +1,17 @@
+name: custom:com.dynatrace.extension.sql-oracle-query
+version: "1.2.1"
+minDynatraceVersion: "1.284.0"
+author:
+  name: Agyl pradipta - CDT
+
+
+sqlOracle:
+  - group: HPSL REG PATIENT Reupload 
+    featureSet: count
+    interval:
+      minutes: 60
+    query: >
+      select 'REUPLOAD_VNA' KOLOM,count(*) as count from PRODIA.HPSL_REG_PATIENT_VNA where status='REUPLOAD'
+    metrics:
+      - key: com.dynatrace.extension.sql-oracle-query.count.pmol-reupload
+        value: col:count
